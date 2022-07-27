@@ -1,0 +1,117 @@
+openapi: "3.0.0"
+info:
+  version: "1.0.0"
+  title: "Gov Api external api"
+tags:
+  - name: "Locales"
+    description: "Polish places"
+    externalDocs:
+      description: "More"
+      url: "https://api.dane.gov.pl/doc"
+servers:
+  - url: "https://api.dane.gov.pl"
+paths:
+  /institutions/:
+    get:
+      tags:
+        - "institution"
+      parameters:
+        - name: "city"
+          in: "query"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: "correct response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Institutions"
+        "405":
+          description: "Invalid input"
+  /institution/{id}:
+    get:
+      tags:
+        - "institution"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: "correct response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Institution"
+        "405":
+          description: "Invalid input"
+
+components:
+  schemas:
+    Institutions:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: "#/components/schemas/Error"
+        included:
+          type: string
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/Data"
+    Institution:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: "#/components/schemas/Error"
+        included:
+          type: string
+        data:
+          $ref: "#/components/schemas/Data"
+    Data:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        attributes:
+          $ref: "#/components/schemas/Attributes"
+    Attributes:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        city:
+          type: string
+        institution_type:
+          type: string
+        epuap:
+          type: string
+        regon:
+          type: string
+        email:
+          type: string
+        street:
+          type: string
+        website:
+          type: string
+    Error:
+      type: object
+      properties:
+        status:
+          type: string
+        detail:
+          type: string
+
+
+
