@@ -1,4 +1,4 @@
-package server.gov;
+package server.infrastructure.restTemplate;
 
 import org.openapitools.model.Institution;
 import org.openapitools.model.Institutions;
@@ -17,14 +17,14 @@ class GovPersistenceAdapter implements GovPersistencePort {
 
     @Override
     public Institutions getInstitutions(String city) {
-        //TODO:
-        // change to /institutions/?city=XXX'
         return restTemplateBean.getForEntity("/institutions/?city={city}", Institutions.class, city)
                 .getBody();
     }
 
     @Override
     public Institution getInstitution(Integer id) {
-        return null;
+        return restTemplateBean.getForEntity(
+                    MessageFormat.format("/institutions/{0}", id), Institution.class)
+                .getBody();
     }
 }

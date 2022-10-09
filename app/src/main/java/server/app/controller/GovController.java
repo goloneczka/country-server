@@ -1,5 +1,6 @@
 package server.app.controller;
 
+import org.openapitools.model.Institution;
 import org.openapitools.model.Institutions;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,10 +20,16 @@ public class GovController {
         this.govService = govService;
     }
 
-    @GetMapping(value = "/get/{city}")
+    @GetMapping(value = "/getByCity/{city}")
     ResponseEntity<Institutions> getInstitutions(@PathVariable String city){
         return ResponseEntity.ok()
                 .body(govService.getInstitutions(city));
+    }
+
+    @GetMapping(value = "/getById/{id}")
+    ResponseEntity<Institution> getInstitution(@PathVariable Integer id){
+        return ResponseEntity.ok()
+                .body(govService.getInstitution(id));
     }
 
 

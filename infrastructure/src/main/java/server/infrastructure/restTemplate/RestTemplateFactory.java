@@ -1,4 +1,4 @@
-package server.gov.restTemplate;
+package server.infrastructure.restTemplate;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
