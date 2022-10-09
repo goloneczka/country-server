@@ -1,0 +1,9 @@
+FROM postgres:14-alpine
+EXPOSE 5432
+ENV POSTGRES_USER postgres
+ENV POSTGRES_PASSWORD admin1
+#TODO
+#ADD VOLUME IN KUBERNETES
+
+#USAGE
+# docker run -p 5432:5432 -itd postgres-db
