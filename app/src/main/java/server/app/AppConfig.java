@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.web.servlet.DispatcherServlet;
+import server.app.logging.LoggingServlet;
 import server.domain.service.GovServiceImpl;
 import server.domain.service.LocationServiceImpl;
 import server.domain.service.ports.GovPersistencePort;
@@ -39,13 +40,13 @@ public class AppConfig {
         return new LocationServiceImpl(locationPersistencePort);
     }
 
-    @Bean
-    public ServletRegistrationBean dispatcherRegistration() {
-        return new ServletRegistrationBean(dispatcherServlet());
-    }
-
-    @Bean(name = DispatcherServletAutoConfiguration.DEFAULT_DISPATCHER_SERVLET_BEAN_NAME)
-    public DispatcherServlet dispatcherServlet() {
-        return new LoggingServlet();
-    }
+//    @Bean
+//    public ServletRegistrationBean dispatcherRegistration() {
+//        return new ServletRegistrationBean(dispatcherServlet());
+//    }
+//
+//    @Bean(name = DispatcherServletAutoConfiguration.DEFAULT_DISPATCHER_SERVLET_BEAN_NAME)
+//    public DispatcherServlet dispatcherServlet() {
+//        return new LoggingServlet();
+//    }
 }

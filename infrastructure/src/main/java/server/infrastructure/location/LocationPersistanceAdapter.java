@@ -26,6 +26,13 @@ class LocationPersistanceAdapter implements LocationPersistencePort {
                 .toList();
     }
 
+    @Override
+    public Long create(Location location) {
+        return locationRepository.save(
+                locationMapper.dtoToEntity(location)
+        ).getId();
+    }
+
     public Location findById(Long id){
         return locationMapper.entityToDTO(
                 locationRepository.findById(id)

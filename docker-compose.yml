@@ -3,6 +3,8 @@ version: '3.8'
 services:
   backend-server:
     image: 'server:latest'
+    ports:
+     - '8080:8080'
     build:
       context: .
     container_name: server
@@ -37,3 +39,6 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=admin1
       - POSTGRES_DB=postgres
+
+# save logs to file
+# docker-compose -f docker-compose.yml up > file.txt

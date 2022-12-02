@@ -4,6 +4,5 @@ XXX named project with spring stack (flyway, docker, mvn, etc.) using hexagonal 
 Currently issues:
  - no test
  - why had to use "config" in searching ${value}
- - unussed var in .yml
     
 
