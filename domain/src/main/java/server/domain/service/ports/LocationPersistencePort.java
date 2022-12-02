@@ -9,4 +9,6 @@ public interface LocationPersistencePort {
     List<Location> getAll();
 
     Location findById(Long id);
+
+    Long create(Location location);
 }

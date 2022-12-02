@@ -24,5 +24,10 @@ public class LocationServiceImpl implements LocationServicePort {
         return locationPersistencePort.getAll();
     }
 
+    @Override
+    public Long createLocation(Location location) {
+        return locationPersistencePort.create(location);
+    }
+
 
 }

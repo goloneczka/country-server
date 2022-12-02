@@ -9,4 +9,6 @@ public interface LocationServicePort {
     Location getLocation(Long id);
 
     List<Location> getAllLocations();
+
+    Long createLocation(Location location);
 }
